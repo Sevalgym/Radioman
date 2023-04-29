@@ -1,7 +1,6 @@
 package org.example.radio;
 
 public class Radio {
-    public int setCurrentChannel;
     private int currentChannel;
     private int currentVolume;
     private int minChannel = 0;
