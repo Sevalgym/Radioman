@@ -1,8 +1,9 @@
 package org.example.radio;
 
-import org.junit.Test;
+import org.testng.annotations.Test;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 
 public class RadioTest {
      @Test
@@ -13,6 +14,7 @@ public class RadioTest {
         assertEquals( 0, variable.getMinVolume() );
         assertEquals( 10, variable.getMaxVolume() );
     }
+
 
     @Test // взять следующий канал
     public void shouldGetNextChannel() {
