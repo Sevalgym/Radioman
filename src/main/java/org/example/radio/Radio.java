@@ -1,4 +1,5 @@
 package org.example.radio;
+
 public class Radio {
     private final int minChannelNumber = 0;
     private final int defaultChannel = 10;
@@ -12,9 +13,9 @@ public class Radio {
 
     }
 
-    public Radio(int defaultChannel ) {
+    public Radio(int defaultChannel) {
 
-        this.maxChannelNumber= defaultChannel -1;
+        this.maxChannelNumber = defaultChannel - 1;
 
     }
 
