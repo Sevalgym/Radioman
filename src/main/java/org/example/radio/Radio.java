@@ -1,114 +1,84 @@
 package org.example.radio;
 
 public class Radio {
-    public int currentChannel;
+    private final int minChannelNumber = 0;
+    private final int defaultChannel = 10;
+    private int maxChannelNumber = defaultChannel - 1;
+    private int currentChannelNumber;
+    private final int minVolume = 0;
+    private final int maxVolume = 100;
     private int currentVolume;
-    private int minChannel = 0;
-    private int maxChannel = 9;
-    private int minVolume = 0;
-    private int maxVolume = 10;
 
-    // увеличение звука на 1. если пытаемся увеличить больше 10, возвращаем 9.
-    public void NextVolume() {
-        currentVolume++;
-        if (currentVolume > maxVolume) {
-            currentVolume--;
-        }
+    public Radio() {
+
     }
 
+    public Radio(int defaultChannel) {
 
-    // уменьшение звука на 1. если звк пытаемся уменьшить меньше 1, возвращаем 1
-    public void PrevVolume() {
-        currentVolume--;
-        if (currentVolume < minVolume) {
-            currentVolume++;
-        }
+        this.maxChannelNumber = defaultChannel - 1;
+
     }
 
-    // увеличение канала на 1. если канал уже 9, возвращаем 9
-    public void NextChannel() {
-        currentChannel++;
-        if (currentChannel > maxChannel) {
-            this.currentChannel = minChannel;
-        }
+    //GET
+    public int getCurrentChannelNumber() {
+        return currentChannelNumber;
     }
 
-    // уменьшение канала на 1. если канал уже 1, возвращается 1
-    public void PrevChannel() {
-        currentChannel--;
-        if (currentChannel < minChannel) {
-            currentChannel = maxChannel;
-        }
-    }
-
-
-    // метод get для канала
-    public int getCurrentChannel() {
-        return currentChannel;
-    }
-
-    // метод для set канала. взависимости от значения относительно min-max
-    public void setCurrentChannel(int currentChannel) {
-
-        if (currentChannel > maxChannel) {
-            this.currentChannel = minChannel;
-            return;
-        }
-        if (currentChannel < minChannel) {
-            this.currentChannel = maxChannel;
-            return;
-        }
-        this.currentChannel = currentChannel;
-    }
-
-    // метод get для звука
     public int getCurrentVolume() {
         return currentVolume;
     }
 
-    // метод set  для звука взависимости ль min-max
-    public void setCurrentVolume(int currentVolume) {
+    // SET
+    public void setCurrentChannelNumber(int currentChannelNumber) {
+        if (currentChannelNumber > maxChannelNumber) {
+            return;
+        }
+        if (currentChannelNumber < minChannelNumber) {
+            return;
+        }
+        this.currentChannelNumber = currentChannelNumber;
+    }
 
+    public void setCurrentVolume(int currentVolume) {
         if (currentVolume > maxVolume) {
-            this.currentVolume = maxVolume;
             return;
         }
         if (currentVolume < minVolume) {
-            this.currentChannel = minVolume;
             return;
         }
         this.currentVolume = currentVolume;
     }
 
-    public int getMinChannel() {
-        return minChannel;
+    public void increaseVolume() {
+        if (currentVolume < maxVolume) {
+            currentVolume++;
+        } else {
+            currentVolume = maxVolume;
+        }
     }
 
-    public void setMinChannel(int minChannel) {
-        this.minChannel = minChannel;
+    public void decreaseVolume() {
+        if (currentVolume > minVolume) {
+            currentVolume--;
+        } else {
+            currentVolume = minVolume;
+        }
     }
 
-    public int getMaxChannel() {
-        return maxChannel;
+    public void increaseChannelNumber() {
+        if (currentChannelNumber < maxChannelNumber) {
+            currentChannelNumber++;
+        } else {
+            currentChannelNumber = minChannelNumber;
+        }
     }
 
-    public void setMaxChannel(int maxChannel) {
-        this.maxChannel = maxChannel;
+    public void decreaseChannelNumber() {
+        if (currentChannelNumber > minChannelNumber) {
+            currentChannelNumber--;
+        } else {
+            currentChannelNumber = maxChannelNumber;
+        }
     }
 
-    public int getMinVolume() {
-        return minVolume;
-    }
-
-    public void setMinVolume(int minVolume) {
-        this.minVolume = minVolume;
-    }
-
-    public int getMaxVolume() {
-        return maxVolume;
-    }
-
-    public void setMaxVolume(int maxVolume) {
-        this.maxVolume = maxVolume;
-    }
 }
